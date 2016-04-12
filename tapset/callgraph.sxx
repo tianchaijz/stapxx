@@ -1,0 +1,7 @@
+probe process("$^exec_path").function("$^arg_func") {
+    printf("%s -> %s\n", thread_indent(4), probefunc());
+}
+
+probe process("$^exec_path").function("$^arg_func").return {
+    printf("%s <- %s\n", thread_indent(-4), probefunc());
+}
